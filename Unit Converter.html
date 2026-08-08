@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unit Converter</title>
+</head>
+<body>
+
+    <h1>Unit Converter</h1>
+
+    <hr>
+
+    <h2>1. Length Converter (Centimeter to Meter)</h2>
+    <input type="number" id="length" placeholder="Enter centimeter">
+    <button onclick="convertLength()">Convert</button>
+    <p id="lengthResult"></p>
+
+    <hr>
+
+    <h2>2. Height Converter (Centimeter to Feet)</h2>
+    <input type="number" id="height" placeholder="Enter centimeter">
+    <button onclick="convertHeight()">Convert</button>
+    <p id="heightResult"></p>
+
+    <hr>
+
+    <h2>3. Temperature Converter (Celsius to Fahrenheit)</h2>
+    <input type="number" id="temp" placeholder="Enter Celsius">
+    <button onclick="convertTemp()">Convert</button>
+    <p id="tempResult"></p>
+
+    <hr>
+
+    <h2>4. Area Converter (Square Meter to Square Centimeter)</h2>
+    <input type="number" id="area" placeholder="Enter square meter">
+    <button onclick="convertArea()">Convert</button>
+    <p id="areaResult"></p>
+
+<script>
+
+function convertLength() {
+    var cm = document.getElementById("length").value;
+    var meter = cm / 100;
+    document.getElementById("lengthResult").innerHTML =
+    cm + " cm = " + meter + " m";
+}
+
+function convertHeight() {
+    var cm = document.getElementById("height").value;
+    var feet = cm / 30.48;
+    document.getElementById("heightResult").innerHTML =
+    cm + " cm = " + feet.toFixed(2) + " ft";
+}
+
+function convertTemp() {
+    var c = document.getElementById("temp").value;
+    var f = (c * 9/5) + 32;
+    document.getElementById("tempResult").innerHTML =
+    c + " °C = " + f.toFixed(2) + " °F";
+}
+
+function convertArea() {
+    var sqm = document.getElementById("area").value;
+    var sqcm = sqm * 10000;
+    document.getElementById("areaResult").innerHTML =
+    sqm + " m² = " + sqcm + " cm²";
+}
+
+</script>
+
+</body>
+</html>

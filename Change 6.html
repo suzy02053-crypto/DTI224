@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculate Change</title>
+  <style>
+    input, button {
+      padding: 6px;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h3>Calculate Change</h3>
+
+  <label>Enter Amount:</label>
+  <input type="number" id="amount" placeholder="Enter amount">
+  <button onclick="CalculateChange()">Submit</button>
+
+  <div id="result"></div>
+
+  <script>
+    function CalculateChange() {
+      let amount = parseInt(document.getElementById("amount").value);
+      let denominations = [1000, 500, 100, 50, 20, 10, 5, 1];
+      let result = "";
+
+      for (let i = 0; i < denominations.length; i++) {
+        let count = Math.floor(amount / denominations[i]);
+        if (count > 0) {
+    result += count + " of ฿" + denominations[i] + "<br>";
+          amount %= denominations[i];
+        }
+      }
+
+      document.getElementById("result").innerHTML = result;
+    }
+  </script>
+</body>
+</html>
