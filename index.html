@@ -1,34 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head <link rel="manifest" href="manifest.json">>
+<head <link rel="manifest" href="manifest.json">
     <title>DTI224</title>
 
     <style>
-        body { <button id="install-btn" style="display:none;">Install App</button>
-
-<script>
-  // Register Service Worker
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js');
-  }
-
-  // Handle PWA Install Prompt
-  let deferredPrompt;
-  const installBtn = document.getElementById('install-btn');
-
-  window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    installBtn.style.display = 'block';
-  });
-
-  installBtn.addEventListener('click', () => {
-    installBtn.style.display = 'none';
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-    }
-  });
-</script>
+        body { 
             font-family: Arial, sans-serif;
             background-color: #fff0f5;
             margin: 0;
@@ -117,8 +93,35 @@
     </style>
 </head>
 
-<body>
+<body> 
+    <button id="install-btn" style="display:none;">Install App</button>
 
+<script>
+  // Register Service Worker
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js');
+  }
+
+  // Handle PWA Install Prompt
+  let deferredPrompt;
+  const installBtn = document.getElementById('install-btn');
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    installBtn.style.display = 'block';
+  });
+
+  installBtn.addEventListener('click', () => {
+    installBtn.style.display = 'none';
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+    }
+  });
+</script>
+</body>
+
+ <body>
     <div class="header">
         <h1>🌸 DTI224 Assignments 🌸</h1>
         <p>My Web Development Portfolio</p>
