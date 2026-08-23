@@ -9,8 +9,7 @@
         .header h1 { margin: 0; font-size: 38px; }
         .header p { font-size: 18px; margin-top: 10px; }
         .container { width: 80%; max-width: 850px; margin: 40px auto; }
-        .container h2 { color: #c2185b; margin-bottom: 30px; }
-        .assignments { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; }
+        .assignments { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; padding: 20px; }
         .card { background-color: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(233, 30, 99, 0.15); border: 2px solid #f8bbd0; }
         .card h3 { color: #c2185b; margin-top: 0; font-size: 22px; }
         .card p { color: #666; }
@@ -21,10 +20,11 @@
     </style>
 </head>
 <body>
-<!-- Install Button -->
-<button id="installApp" style="display: block; margin: 20px auto; padding: 12px 24px; background-color: #ff1493; color: white; border: none; border-radius: 20px; font-weight: bold; cursor: pointer;">
-  Install App
-</button>
+
+    <!-- Install Button -->
+    <button id="installApp" style="display: block; margin: 20px auto; padding: 12px 24px; background-color: #e91e63; color: white; border: none; border-radius: 20px; font-weight: bold; cursor: pointer;">
+        Install App
+    </button>
 
     <div class="header">
         <h1>🌸 DTI224 Assignments 🌸</h1>
@@ -59,31 +59,31 @@
         <p>♡ DTI224 ♡</p>
     </div>
 
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./sw.js')
-      .then(() => console.log('Service Worker Registered'))
-      .catch((err) => console.log('SW registration failed: ', err));
-  }
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./sw.js')
+                .then(() => console.log('Service Worker Registered'))
+                .catch((err) => console.log('SW failed: ', err));
+        }
 
-  let deferredPrompt;
-  const installBtn = document.getElementById('installApp');
+        let deferredPrompt;
+        const installBtn = document.getElementById('installApp');
 
-  window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-  });
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+        });
 
-  installBtn.addEventListener('click', () => {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      deferredPrompt.userChoice.then((choiceResult) => {
-        deferredPrompt = null;
-      });
-    } else {
-      alert('To install this app, tap your browser menu (⋮ or share) and select "Add to Home Screen" or "Install App".');
-    }
-  });
-</script>
+        installBtn.addEventListener('click', () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then(() => {
+                    deferredPrompt = null;
+                });
+            } else {
+                alert('App installation ready! If prompt does not appear, use browser menu > Add to Home Screen.');
+            }
+        });
+    </script>
 </body>
 </html>
