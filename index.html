@@ -1,168 +1,83 @@
 <!DOCTYPE html>
 <html>
-<head <link rel="manifest" href="manifest.json">
+<head>
+    <link rel="manifest" href="manifest.json">
     <title>DTI224</title>
-
     <style>
-        body { 
-            font-family: Arial, sans-serif;
-            background-color: #fff0f5;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
-
-        .header {
-            background-color: #e91e63;
-            color: white;
-            padding: 45px 20px;
-        }
-
-        .header h1 {
-            margin: 0;
-            font-size: 38px;
-        }
-
-        .header p {
-            font-size: 18px;
-            margin-top: 10px;
-        }
-
-        .container {
-            width: 80%;
-            max-width: 850px;
-            margin: 40px auto;
-        }
-
-        .container h2 {
-            color: #c2185b;
-            margin-bottom: 30px;
-        }
-
-        .assignments {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-        }
-
-        .card {
-            background-color: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(233, 30, 99, 0.15);
-            border: 2px solid #f8bbd0;
-        }
-
-        .card h3 {
-            color: #c2185b;
-            margin-top: 0;
-            font-size: 22px;
-        }
-
-        .card p {
-            color: #666;
-        }
-
-        .card a {
-            display: inline-block;
-            background-color: #e91e63;
-            color: white;
-            text-decoration: none;
-            padding: 11px 22px;
-            border-radius: 25px;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-
-        .card a:hover {
-            background-color: #c2185b;
-        }
-
-        .footer {
-            margin-top: 50px;
-            padding: 20px;
-            background-color: #e91e63;
-            color: white;
-        }
-
-        @media (max-width: 600px) {
-            .assignments {
-                grid-template-columns: 1fr;
-            }
-        }
+        body { font-family: Arial, sans-serif; background-color: #fff0f5; margin: 0; padding: 0; text-align: center; }
+        .header { background-color: #e91e63; color: white; padding: 45px 20px; }
+        .header h1 { margin: 0; font-size: 38px; }
+        .header p { font-size: 18px; margin-top: 10px; }
+        .container { width: 80%; max-width: 850px; margin: 40px auto; }
+        .container h2 { color: #c2185b; margin-bottom: 30px; }
+        .assignments { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; }
+        .card { background-color: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(233, 30, 99, 0.15); border: 2px solid #f8bbd0; }
+        .card h3 { color: #c2185b; margin-top: 0; font-size: 22px; }
+        .card p { color: #666; }
+        .card a { display: inline-block; background-color: #e91e63; color: white; text-decoration: none; padding: 11px 22px; border-radius: 25px; margin-top: 10px; font-weight: bold; }
+        .card a:hover { background-color: #c2185b; }
+        .footer { margin-top: 50px; padding: 20px; background-color: #e91e63; color: white; }
+        @media (max-width: 600px) { .assignments { grid-template-columns: 1fr; } }
     </style>
 </head>
-
-<body> 
+<body>
     <button id="install-btn" style="display:none;">Install App</button>
 
-<script>
-  // Register Service Worker
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js');
-  }
-
-  // Handle PWA Install Prompt
-  let deferredPrompt;
-  const installBtn = document.getElementById('install-btn');
-
-  window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    installBtn.style.display = 'block';
-  });
-
-  installBtn.addEventListener('click', () => {
-    installBtn.style.display = 'none';
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-    }
-  });
-</script>
-</body>
-
- <body>
     <div class="header">
         <h1>🌸 DTI224 Assignments 🌸</h1>
         <p>My Web Development Portfolio</p>
     </div>
 
-
-        <div class="assignments">
-
-            <div class="card">
-                <h3>My Resume</h3>
-                <p>View my personal resume.</p>
-                <a href="resume.html">View Resume</a>
-            </div>
-
-            <div class="card">
-                <h3>Change</h3>
-                <a href="Change.html">View</a>
-            </div>
-
-            <div class="card">
-                <h3>Grade</h3>
-                <a href="Grade.html">View</a>
-            </div>
-
-            <div class="card">
-                <h3>Unit Converter</h3>
-                <a href="Unit Converter.html">View</a>
-            </div>
-
-            <div class="card">
-                <h3>Distance</h3>
-                <a href="Distance.html">View</a>
-            </div>
-
+    <div class="assignments">
+        <div class="card">
+            <h3>My Resume</h3>
+            <p>View my personal resume.</p>
+            <a href="resume.html">View Resume</a>
         </div>
-
+        <div class="card">
+            <h3>Change</h3>
+            <a href="Change.html">View</a>
+        </div>
+        <div class="card">
+            <h3>Grade</h3>
+            <a href="Grade.html">View</a>
+        </div>
+        <div class="card">
+            <h3>Unit Converter</h3>
+            <a href="Unit Converter.html">View</a>
+        </div>
+        <div class="card">
+            <h3>Distance</h3>
+            <a href="Distance.html">View</a>
+        </div>
     </div>
 
     <div class="footer">
-        <p>♡ DTI224  ♡</p>
+        <p>♡ DTI224 ♡</p>
     </div>
 
+    <script>
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js');
+        }
+
+        // Handle PWA Install Prompt
+        let deferredPrompt;
+        const installBtn = document.getElementById('install-btn');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            installBtn.style.display = 'block';
+        });
+
+        installBtn.addEventListener('click', () => {
+            installBtn.style.display = 'none';
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+            }
+        });
+    </script>
 </body>
 </html>
