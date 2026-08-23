@@ -21,7 +21,8 @@
     </style>
 </head>
 <body>
-  <button id="install-btn" style="display:none; margin: 20px auto; padding: 12px 24px; background-color: #e91e63; color: white; border: none; border-radius: 25px; font-weight: bold; cursor: pointer;">
+<!-- Install Button -->
+<button id="installApp" style="display: block; margin: 20px auto; padding: 12px 24px; background-color: #ff1493; color: white; border: none; border-radius: 20px; font-weight: bold; cursor: pointer;">
   Install App
 </button>
 
@@ -58,28 +59,31 @@
         <p>♡ DTI224 ♡</p>
     </div>
 
-    <script>
-        // Register Service Worker
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('./sw.js');
-        }
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js')
+      .then(() => console.log('Service Worker Registered'))
+      .catch((err) => console.log('SW registration failed: ', err));
+  }
 
-        // Handle PWA Install Prompt
-        let deferredPrompt;
-        const installBtn = document.getElementById('install-btn');
+  let deferredPrompt;
+  const installBtn = document.getElementById('installApp');
 
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            installBtn.style.display = 'block';
-        });
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+  });
 
-        installBtn.addEventListener('click', () => {
-            installBtn.style.display = 'none';
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-            }
-        });
-    </script>
+  installBtn.addEventListener('click', () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+        deferredPrompt = null;
+      });
+    } else {
+      alert('To install this app, tap your browser menu (⋮ or share) and select "Add to Home Screen" or "Install App".');
+    }
+  });
+</script>
 </body>
 </html>
